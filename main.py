@@ -76,7 +76,7 @@ def generate_text(prompt):
     data = {
         'prompt': prompt,
         'temperature': 0.5,
-        'max_tokens': 500,
+        'max_tokens': 100,
         "model": "davinci",
         'stop': '\n',
     }
@@ -88,6 +88,7 @@ def generate_text(prompt):
     # 發送OpenAI API請求
     response = requests.post(cfg.OPENAI_ENDPOINT, headers=headers, json=data, stream=True)
     response_data = json.loads(response.content)
+    print(response_data, response_data)
 
     # 解析OpenAI API的響應數據
     message = response_data['choices'][0]['text'].strip()
