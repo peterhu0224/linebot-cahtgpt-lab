@@ -49,6 +49,8 @@ def webhook():
             user_id = event["source"]["userId"]
             message_text = event["message"]["text"]
 
+            print('event', event)
+
             # 調用OpenAI API進行文本生成
             response = generate_text(message_text)
 
@@ -89,9 +91,10 @@ def generate_text(prompt):
 
     # 解析OpenAI API的響應數據
     message = response_data['choices'][0]['text'].strip()
+
     return message
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-    # app.run()
+    # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+    app.run()
